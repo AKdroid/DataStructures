@@ -34,7 +34,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/linkedlist/linklist_head.o \
+	${OBJECTDIR}/src/basicsort.o
 
 
 # C Compiler Flags
@@ -61,10 +63,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/datastructures: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/datastructures ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/main.o: main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/main.o: src/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/linkedlist/linklist_head.o: src/linkedlist/linklist_head.c 
+	${MKDIR} -p ${OBJECTDIR}/src/linkedlist
+	${RM} $@.d
+	$(COMPILE.c) -g -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/linkedlist/linklist_head.o src/linkedlist/linklist_head.c
+
+${OBJECTDIR}/src/basicsort.o: src/basicsort.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/basicsort.o src/basicsort.cpp
 
 # Subprojects
 .build-subprojects:

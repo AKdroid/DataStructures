@@ -5,7 +5,7 @@
  *      Author: akhil
  */
 
-#include<Sorter/basicsort.h>
+#include<basicsort.h>
 
 void swap(int *a,int *b){
 	int temp=*a;
