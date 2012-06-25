@@ -1,12 +1,14 @@
 #include<linkedlist/linklist_head.h>
 
-linklist *createnode(){
-    return (linklist *)malloc(sizeof(linklist)); 
+linklist * createnode(){
+    linklist*nw= (linklist *)malloc(sizeof(linklist)); 
+    nw->next=NULL;
+    nw->prev=NULL;
+    return nw;
 }
 void deletenode(linklist *node){
     free(node);
 }
-
 
 linklist * gotonext( linklist * current){
     return current->next;
@@ -16,34 +18,34 @@ linklist * gotoprevious(linklist * current){
     return current->prev;
 }
 
-int insert( linklist **first,int position){
+int insert( linklist **first,int position,linklist* node){
     int i;
-    linklist *node,*nw;
+    linklist *nw;
     if(position>count(first)){
         return -1;
     }
     else if(position == 0){
-        node=createnode();
+        //node=createnode();
         node->prev=NULL;
         node->next=*first;
-        first=&node;
+        *first=node;
     }
     else{
         nw=*first;
-        for(i=0;i<position;i++){
+        for(i=0;i<position-1;i++){
             nw=nw->next;
-        }
-        nw=gotoprevious(nw);
-        node=createnode();
+            
+        } 
         node->next=nw->next;
         node->prev=nw;
+        if(nw->next!=NULL)
         nw->next->prev=node;
         nw->next=node;
     }
     return 0;
 }
 
-int removenode (linklist **first,int position){
+int detachnode (linklist **first,int position){
     int i;
     linklist *now,*temp;
     if(position>=count(first))
@@ -52,18 +54,16 @@ int removenode (linklist **first,int position){
         now=*first;
         now->next->prev=NULL;
         first=&now->next;
-        deletenode(now);
     }
     else{
         now=*first;
-        for(i=0;i<position;i++){
+        for(i=0;i<position-1;i++){
             now=now->next;
         }
-        now=gotoprevious(now);
+       
         temp=now->next;
         now->next=temp->next;
         temp->next->prev=now;
-        free(temp);
     } 
     return 0;    
 }
@@ -97,16 +97,5 @@ void reverse(linklist ** first){
         temp->next=temp->prev;
         temp->prev=now;
     }
-    first=&temp;
+    *first=temp;
 }
-void swap(linklist* one,linklist*two){
-    linklist *temp_n,*temp_p;
-    temp_n=one->next;
-    temp_p=one->prev;
-    
-    one->next=two->next;
-    one->prev=two->prev;
-    
-    two->next=temp_n;
-    two->prev=temp_p;
-} 

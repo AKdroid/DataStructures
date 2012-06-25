@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/linkedlist/linklist_sample.o \
 	${OBJECTDIR}/src/linkedlist/linklist_head.o \
 	${OBJECTDIR}/src/basicsort.o
 
@@ -67,6 +68,11 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/linkedlist/linklist_sample.o: src/linkedlist/linklist_sample.c 
+	${MKDIR} -p ${OBJECTDIR}/src/linkedlist
+	${RM} $@.d
+	$(COMPILE.c) -g -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/linkedlist/linklist_sample.o src/linkedlist/linklist_sample.c
 
 ${OBJECTDIR}/src/linkedlist/linklist_head.o: src/linkedlist/linklist_head.c 
 	${MKDIR} -p ${OBJECTDIR}/src/linkedlist

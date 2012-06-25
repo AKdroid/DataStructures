@@ -11,6 +11,10 @@
 #ifndef LINKLIST_HEAD_H
 #define	LINKLIST_HEAD_H
 
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
 struct linklist_head{
     struct linklist_head *next;
     struct linklist_head *prev;
@@ -29,15 +33,14 @@ linklist * gotoprevious( linklist * current);
 
 //Basic functions
 
-int  insert( linklist ** first,int position);
-int  removenode( linklist ** first,int position);
+int  insert( linklist ** first,int position,linklist *entry);
+int  detachnode( linklist ** first,int position);
 linklist *get(linklist ** first,int position);
 
 //Misc
 
 int count( linklist ** first);
 void reverse(linklist **first);         //reverse the whole list 
-void swap(linklist* one,linklist* two); //can be used for sorting
 
 /*
  * Application Note
@@ -47,28 +50,9 @@ void swap(linklist* one,linklist* two); //can be used for sorting
  * This offset can be retrieved using a macro defined in <stddef.h> :
  *   mystruct_pointer=  (struct mystruct *)(linklist_pointer -
  *                    offsetof(struct mystruct,mylinklist )); 
+ * linux_sample.c is an example
  *   
  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-
-
 
 #ifdef	__cplusplus
 }
