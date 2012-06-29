@@ -35,7 +35,7 @@ void remove_Integer(int position,linklist **first){
     IntegerList* tempI;
     if(temp!=NULL){
         tempI=getIntegerList(temp);
-        int result=removenode(first,position);
+        int result=detachnode(first,position);
         if(result==0)
         free(tempI);
     }

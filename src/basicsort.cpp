@@ -70,4 +70,55 @@ void insertionsort(int *array,int arraylength,int flag){
 	}
 }
 
-
+void merge(int *arrayleft,int*arrayright,int length1,int length2){
+    int i=0,j=0,array[length1+length2],k,m;
+    
+    //Main merge algorithm
+    
+    for(k=0;i<length1&&j<length2;k++){
+        if(arrayleft[i]<=arrayright[j])
+        {
+            array[k]=arrayleft[i++];
+        }
+        else{
+            array[k]=arrayright[j++];
+        }
+    }
+    for(;i<length1;i++,k++){
+        array[k]=arrayleft[i];
+        
+    }
+    for(;j<length2;j++,k++){
+        array[k]=arrayright[j];      
+    }
+   
+    //Copy the merged array into the original one
+    k=0;
+    for(i=0;i<length1;i++,k++){
+        arrayleft[i]=array[k];
+    }
+    for(j=0;j<length2;j++,k++){
+        arrayright[j]=array[k];
+    }
+   
+}
+void mergesort(int *array,int length){
+   
+    if(length==2){
+        if(array[0]>array[1])
+        {
+            int temp=array[0];
+            array[0]=array[1];
+            array[1]=temp;
+        }
+        return;
+    }
+    else if(length<2)
+        return;
+    else
+    {
+        mergesort(array,length/2);
+        mergesort(array+length/2,length-length/2);
+        merge(array,array+length/2,length/2,length-length/2);
+    }
+}

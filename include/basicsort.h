@@ -26,4 +26,8 @@ void bubblesort(int *array,int arraylength,int flag);
 
 void insertionsort(int *array,int arraylength,int flag);
 
+void merge(int*left,int*right,int length_left,int length_right);
+
+void mergesort(int* array,int length);
+
 #endif /* BASICSORT_H_ */

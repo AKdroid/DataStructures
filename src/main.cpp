@@ -14,21 +14,11 @@
 using namespace std;
 int main()
 {
-	int number[]={1,2,3,4,5};
-        linklist *first=NULL;
-        IntegerList *list_first,*second;
-        
-        for(int m=0;m<5;m++){
-        insert_Integer(number[m],m,&first);
+	int number[]={15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0};
+        mergesort(number,16);
+        for(int i=0;i<16;i++){
+            cout<<number[i]<<endl;
         }
-        list_first=getIntegerList(first);
-        
-        displayall(&first);
-        
-        displayall(&first);
-        
-        cout<<search_list(6,&first)<<endl;
-        
         return 0;
 		
 }
