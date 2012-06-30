@@ -122,3 +122,53 @@ void mergesort(int *array,int length){
         merge(array,array+length/2,length/2,length-length/2);
     }
 }
+void set_pivot(int *array,int length){
+    /*
+     * set pivot as the an element between the most smallest and most largest 
+     * to avoid the worst case. Somewhat random in nature.
+     */
+    int great,less,median,med;
+    median=(length-1)/2;
+    
+    if(array[0]<array[length-1]){
+        great=length-1;
+        less=0;
+    }
+    else
+    {
+        great=0;
+        less=length-1;
+    }
+    if(array[great]<array[median]){
+        med=great;
+    }else if(array[less]>array[median]){
+        med=less;
+    }else med=median;
+    
+    swap(array,array+med);
+    
+}
+void quicksort(int *array,int length){
+    int i,j;
+    // i = boundary marking less than pivot and greater than pivot
+    // j = boundary marking partitioned and unpartitioned space
+    
+    if(length<=1)
+        return;
+    
+    i=1;
+    
+    set_pivot(array,length);  //sets the pivot to improve the performance
+    
+    for(j=1;j<length;j++){              // Partition the array so that array contains three parts
+        if(array[0]>array[j]){          // the pivot,the partition less than pivot
+            swap(array+i,array+j);      // partition more than pivot
+            i++;
+        }
+    }
+    swap(array,array+i-1);              //put the pivot value in its proper sorted place.
+    
+    quicksort(array,i-1); //quicksort the values less than pivot
+    
+    quicksort(array+i,length-i); //quicksort the values greater than pivot
+}

@@ -9,6 +9,9 @@
           <itemPath>include/linkedlist/linklist_head.h</itemPath>
           <itemPath>include/linkedlist/linklist_sample.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="trees" displayName="trees" projectFiles="true">
+          <itemPath>include/trees/BST.h</itemPath>
+        </logicalFolder>
         <itemPath>include/basicsort.h</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -23,6 +26,9 @@
         <logicalFolder name="linkedlist" displayName="linkedlist" projectFiles="true">
           <itemPath>src/linkedlist/linklist_head.c</itemPath>
           <itemPath>src/linkedlist/linklist_sample.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="trees" displayName="trees" projectFiles="true">
+          <itemPath>src/trees/BST.c</itemPath>
         </logicalFolder>
         <itemPath>src/basicsort.cpp</itemPath>
         <itemPath>src/main.cpp</itemPath>
@@ -42,6 +48,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>src</Elem>
+    <Elem>include/trees</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

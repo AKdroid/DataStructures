@@ -30,4 +30,8 @@ void merge(int*left,int*right,int length_left,int length_right);
 
 void mergesort(int* array,int length);
 
+void set_pivot(int *array,int length);
+
+void quicksort(int *array,int length);
+
 #endif /* BASICSORT_H_ */

@@ -37,6 +37,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/linkedlist/linklist_sample.o \
 	${OBJECTDIR}/src/linkedlist/linklist_head.o \
+	${OBJECTDIR}/src/trees/BST.o \
 	${OBJECTDIR}/src/basicsort.o
 
 
@@ -78,6 +79,11 @@ ${OBJECTDIR}/src/linkedlist/linklist_head.o: src/linkedlist/linklist_head.c
 	${MKDIR} -p ${OBJECTDIR}/src/linkedlist
 	${RM} $@.d
 	$(COMPILE.c) -O2 -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/linkedlist/linklist_head.o src/linkedlist/linklist_head.c
+
+${OBJECTDIR}/src/trees/BST.o: src/trees/BST.c 
+	${MKDIR} -p ${OBJECTDIR}/src/trees
+	${RM} $@.d
+	$(COMPILE.c) -O2 -Iinclude -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/trees/BST.o src/trees/BST.c
 
 ${OBJECTDIR}/src/basicsort.o: src/basicsort.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
