@@ -23,7 +23,7 @@ typedef struct BST BST;
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
+static int bst_cnt;
 BST * createNode();
 void deleteNode(BST *);
 
@@ -33,6 +33,8 @@ int  removeData(int data_,BST ** root);
 BST* search(int data_,BST * root,BST **parent);
 
 void display_inorder(BST* root);
+void resetcount();
+void display_order_statistic(BST*root,int order,int *value);
 void display_preorder(BST* root);
 void display_postorder(BST* root);
 void display_reverseinorder(BST *root);

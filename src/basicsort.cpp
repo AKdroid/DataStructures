@@ -172,3 +172,13 @@ void quicksort(int *array,int length){
     
     quicksort(array+i,length-i); //quicksort the values greater than pivot
 }
+
+void maxheapify(int * array,int length){
+    
+}
+void minheapify(int * array,int length){
+    
+}
+void heapsort(int *array,int length,int order){
+    
+}

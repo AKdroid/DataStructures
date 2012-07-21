@@ -106,10 +106,25 @@ void display_inorder(BST *root){ //sort in ascending number
         return;
 
      display_inorder(root->left);
-    
+     
      printf("%d\n",root->data);      
      
      display_inorder(root->right);
+    
+}
+void resetcount(){
+    bst_cnt=0;
+}
+void display_order_statistic(BST *root,int order,int *value){ //sort in ascending number
+    if(root==NULL)
+        return;
+     display_order_statistic(root->left,order,value);
+     if(bst_cnt==order){
+         *value=root->data;
+         printf("\nmedian=%d , %d",bst_cnt,root->data); 
+     }
+     bst_cnt++;    
+     display_order_statistic(root->right,order,value);
     
 }
 void display_preorder(BST *root){ 
