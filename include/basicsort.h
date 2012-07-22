@@ -15,7 +15,8 @@
 
 #define ASCENDING 0
 #define DESCENDING 1
-
+#define MAX_HEAP 0
+#define MIN_HEAP 1
 void swap(void *a,void *b);
 
 void rotate(int dest,int source,int * array);
@@ -33,5 +34,13 @@ void mergesort(int* array,int length);
 void set_pivot(int *array,int length);
 
 void quicksort(int *array,int length);
+
+void buildheap(int *array,int length,int type);
+
+void maxheapify(int *array,int length,int i);
+
+void minheapify(int *array,int length,int i);
+
+void heapsort(int *array,int length,int order);
 
 #endif /* BASICSORT_H_ */

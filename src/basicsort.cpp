@@ -173,12 +173,67 @@ void quicksort(int *array,int length){
     quicksort(array+i,length-i); //quicksort the values greater than pivot
 }
 
-void maxheapify(int * array,int length){
-    
+void buildheap(int *array,int length,int type){
+    int i;
+    for(i=(length+1)/2;i>0;i--){
+        if(type==MAX_HEAP){
+            maxheapify(array,length,i);
+        }
+        else if(type==MIN_HEAP){
+            minheapify(array,length,i);
+        }
+    }
 }
-void minheapify(int * array,int length){
-    
+
+void maxheapify(int * array,int length,int i){
+    int r,l,largest,temp;
+    l=2*i;
+    r=2*i+1;
+    if(l-1<length && array[l-1]>array[i-1]){
+        largest=l-1;
+    }
+    else
+        largest=i-1;
+    if(r-1<length && array[r-1]>array[largest]){
+        largest=r-1;
+    }
+    if(i!=largest+1){
+        temp=array[i-1];
+        array[i-1]=array[largest];
+        array[largest]=temp;
+        maxheapify(array,length,largest+1);
+    }
+}
+void minheapify(int * array,int length,int i){
+    int r,l,smallest,temp;
+    l=2*i;
+    r=2*i+1;
+    if(l-1<length && array[l-1]<array[i-1]){
+        smallest=l-1;
+    }
+    else
+        smallest=i-1;
+    if(r-1<length && array[r-1]<array[smallest]){
+        smallest=r-1;
+    }
+    if(i!=smallest+1){
+        temp=array[i-1];
+        array[i-1]=array[smallest];
+        array[smallest]=temp;
+        minheapify(array,length,smallest+1);
+    }
 }
 void heapsort(int *array,int length,int order){
-    
+    while(length>0){
+        if(order==ASCENDING){
+            buildheap(array,length,MIN_HEAP);
+            array=array+1;
+            length--;
+        }
+        else if(order==DESCENDING){
+            buildheap(array,length,MAX_HEAP);
+            array=array+1;
+            length--;
+        }
+    }
 }
