@@ -173,6 +173,8 @@ void quicksort(int *array,int length){
     quicksort(array+i,length-i); //quicksort the values greater than pivot
 }
 
+//Heap functions
+
 void buildheap(int *array,int length,int type){
     int i;
     for(i=(length+1)/2;i>0;i--){
@@ -237,3 +239,28 @@ void heapsort(int *array,int length,int order){
         }
     }
 }
+
+int extract_min(int *array,int length){
+    buildheap(array,length,MIN_HEAP);
+    return array[0];
+}
+
+int extract_max(int *array,int length){
+    buildheap(array,length,MAX_HEAP);
+    return array[0];
+}
+int binary_search(int *array,int length,int query,int* index){
+  int x;
+  if(length==0)return 0;
+  if(query==array[length/2]){
+    *index=length/2;
+    return 1;
+  }
+  if(length==1)return 0;
+  if(query<array[length/2]){
+     return binary_search(array,length/2,query,index);    
+  }
+  if(query>array[length/2]){
+   x=binary_search(array+length/2,length/2,query,index);
+   *index=*index+length/2;
+  }

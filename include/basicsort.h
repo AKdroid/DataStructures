@@ -43,4 +43,10 @@ void minheapify(int *array,int length,int i);
 
 void heapsort(int *array,int length,int order);
 
+int extract_min(int *array,int length);
+
+int extract_max(int *array,int length);
+
+int binary_search(int *array,int length,int query,int* index);
+
 #endif /* BASICSORT_H_ */
