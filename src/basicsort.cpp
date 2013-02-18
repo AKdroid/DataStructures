@@ -249,18 +249,33 @@ int extract_max(int *array,int length){
     buildheap(array,length,MAX_HEAP);
     return array[0];
 }
-int binary_search(int *array,int length,int query,int* index){
-  int x;
-  if(length==0)return 0;
-  if(query==array[length/2]){
-    *index=length/2;
-    return 1;
-  }
-  if(length==1)return 0;
-  if(query<array[length/2]){
-     return binary_search(array,length/2,query,index);    
-  }
-  if(query>array[length/2]){
-   x=binary_search(array+length/2,length/2,query,index);
-   *index=*index+length/2;
-  }
+int binarysearch(int* array,int left,int right,int query,int direction){
+    int mid,pos=-1;
+    while(left<=right){
+            mid=left+(right-left)/2;
+            if(array[mid]==query){
+                pos=mid;
+                if(direction==0)break;
+            }
+            if(array[mid]<query+(direction>0?direction:0)){
+                left=mid+1;
+            }else{
+                right=mid-1;
+            }
+                
+                
+    }
+    return pos;
+    
+}
+int findvalue(int *array,int size,int query){
+    int p;
+    int left=0;
+    int right=size-1;
+    p=binarysearch(array,left,right,query,-1);
+    if(p>=0){
+        return binarysearch(array,left,right,query,1)-p+1;
+    }
+    return 0;
+}
+

@@ -47,6 +47,9 @@ int extract_min(int *array,int length);
 
 int extract_max(int *array,int length);
 
-int binary_search(int *array,int length,int query,int* index);
+int binary_search(int *array,int left,int right,int query,int direction);
+
+int findvalue(int *array,int size,int query);
+
 
 #endif /* BASICSORT_H_ */
